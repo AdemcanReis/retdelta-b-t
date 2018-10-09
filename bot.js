@@ -95,14 +95,14 @@ client.on("guildMemberAdd", member => {
 	var channel = member.guild.channels.find("name", "giriş-çıkış");
 	if (!channel) return;
 	
-	var role = member.guild.roles.find("name", "üye");
+	var role = member.guild.roles.find("name", "serçe");
 	if (!role) return;
 	
 	member.addRole(role); 
 	
 	channel.send(member + " artık " + role + " rolü ile aramızda");
 	
-	member.send("Aramıza hoş geldin! Artık @üye rolüne sahipsin!")
+	member.send("Aramıza hoş geldin! Artık @serçe rolüne sahipsin!")
 	
 });
 
