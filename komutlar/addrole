@@ -1,0 +1,39 @@
+const Discord = require("discord.js");
+
+exports.run = async (client, message, args) => {
+  if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("❌Bu komutu kullanamak bilmek için **Üyeleri Yönet** yetkisine sahip olman lazım..");
+  if(args[0] == "help"){
+    message.reply("Doğru Kullanım: !rolver <kullanıcı> <rol>");
+    return;
+  }
+  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if(!rMember) return message.reply("Lütfen bir kişi belirtin.");
+  let role = args.join(" ").slice(22);
+  if(!role) return message.reply("Bir rol giriniz");
+  let gRole = message.guild.roles.find(`name`, role);
+  if(!gRole) return message.reply("Rolü bulamıyorum.");
+
+  if(rMember.roles.has(gRole.id)) return message.reply("❌ Kullanıcı zaten bu role sahip.");
+  await(rMember.addRole(gRole.id));
+
+  try{
+    await rMember.send(`Sana ${gRole.name} adlı rol verildi.`)
+  }catch(e){
+    console.log(e.stack);
+    message.channel.send(`Tebrikler <@${rMember.id}>, rol verildi ${gRole.name}.`)
+  }
+}
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 0
+};
+
+exports.help = {
+  name: "rolver",
+  description: "Belirtilen kullanıcıya rol verir.",
+  usage: "rolver"
+};
+
