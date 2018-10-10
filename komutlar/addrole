@@ -32,8 +32,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "rolver",
+  name: "rol",
   description: "Belirtilen kullanıcıya rol verir.",
-  usage: "rolver"
+  usage: "rol"
 };
 
