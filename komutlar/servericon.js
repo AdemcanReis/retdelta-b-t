@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 exports.run = function(client, message) {
 
     const embed = new Discord.RichEmbed()
-        .setDescription("**SUNUCU ICONU**")
+        .setDescription("**_SUNUCU ICONU_**")
         .setImage(message.guild.iconURL)
 
     message.channel.send(embed);
