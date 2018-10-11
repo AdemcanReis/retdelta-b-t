@@ -14,12 +14,12 @@ exports.run = function(client, message) {
 exports.conf = {
   enabled: true, 
   guildOnly: true, 
-  aliases: ['avatarım'],
+  aliases: ['crew'],
   permLevel: 0 
 };
 
 exports.help = {
-  name: 'avatar', 
-  description: 'Avatarınızı gösterir',
-  usage: 'avatar'
+  name: 'crew', 
+  description: 'Bot Yöneticisini Gösterir',
+  usage: 'crew'
 };
