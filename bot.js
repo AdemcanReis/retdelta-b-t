@@ -79,7 +79,7 @@ client.unload = command => {
 };
 
 client.on('message', msg => {
-  if (msg.content === 'Sa,sa') {
+  if (msg.content === 'Sa') {
     msg.reply('**Aleyküm Selam Kardeşim**');
   }
 });
