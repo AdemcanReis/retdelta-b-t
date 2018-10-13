@@ -1,20 +1,29 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
+module.exports.run = async (bot, message, args) => {
+    
+    
 
-exports.run = function(client, message) {
+    let msgping1 = new Date();
 
-    message.channel.send("Pingim **" + client.ping + "** ms!");
+    let botping = new Date() - message.createdAt;
+
+    let msgping2 = new Date() - msgping1;
+
+    let pingembed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .addField('API Ping : ', Math.floor(bot.ping) + 'ms')
+        .addField('Bot Ping : ', Math.floor(botping) + 'ms')
+        .addField('Message Ping : ', '~' + Math.round(msgping2) + 'ms')
+        .setTimestamp(new Date())
+        .setFooter(`requested by ${message.author.tag}`);
+
+        
+    return message.channel.send(pingembed);
+        
+
 };
 
-exports.conf = {
-  enabled: true, 
-  guildOnly: true, 
-  aliases: ['p'],
-  permLevel: 0 
-};
-
-exports.help = {
-  name: 'ping', 
-  description: 'Botun pingini gösterir',
-  usage: 'ping'
+module.exports.help = {
+    name: "ping"
 };
